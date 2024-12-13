@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create A Guardian</title>
+    <style>
+       /* General Reset */
+       * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient( #02835640, #b3cce6);
+    min-height: 80vh;
+        }
+        /* Keyframes for animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes buttonHover {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+        
+        header {
+            position: relative;
+            height: 50px;
+        }
+        /* Navbar */
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 1.0rem 3rem;
+            background-color: #E9EDF4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #028355;
+            background-color: #FFFFFF;
+            padding: 0.5rem 0.8rem;
+            border-radius: 35px;
+            animation: slideIn 4s ease forwards;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .navbar .auth-buttons {
+            margin-left: 1000px;
+            background-color: #FFFFFF;
+            padding: 0.01rem 0.5rem;
+            border-radius: 35px;
+            
+        }
+        
+        .auth-buttons .signup {
+            padding: 0.6rem 1.0rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .auth-buttons .signup {
+            background-color: transparent;
+            color: #028355;
+        }
+        
+        .auth-buttons .signup:hover {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #028355;
+            animation: buttonHover 0.3s forwards;
+        }
+
+
+        .form-container {
+            background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 50px 0 50px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px;
+    margin-left: 500px;
+    margin-top: 10px;
+    animation: slideIn 0.8s ease-out;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            color: #04724b;
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+        
+        label {
+            display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000E00;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 98%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #0283565b;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="password"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #02835674;
+    box-shadow: 0 0 8px  rgba(39, 138, 48, 0.5);
+        }
+        textarea {
+            resize: none;
+        }
+        
+/* Button Styling */
+button.save-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient( #02835640, #b3cce6);
+    color: #028355;
+    border: none;
+    border-radius: 30px 0 30px 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.save-btn:hover {
+    transform: translateY(-2px);
+    background-color: #028355;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+        /* Popup styles */
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-color: #02835674;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+        }
+        .popup-content h4{
+            font-size: 2rem;
+            color: #028355;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .close-button {
+            display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #d32f2f95, #E9EDF4);
+    color: white;
+    border: none;
+    border-radius: 30px 0 30px 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .close-button:hover {
+            transform: translateY(-2px);
+            background-color: rgb(110, 35, 35);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <img src="../Resourses/index/logo 01.png">
+            <div class="logo">Vocal Vantage</div>
+    
+            <div class="auth-buttons">
+                <a href=""><button class="signup" >Back to Home</button></a>
+            </div>
+        </header>
+    <br>
+
+    <div class="form-container">
+        <h2>Patient Entry Form</h2>
+
+        <form id="patientForm" action="paitent_note_entry.php" method="POST" onsubmit="handleFormSubmit(event)">
+
+            <label for="patient_name">Patient Name:</label>
+            <input type="text" id="patient_name" name="patient_name" required>
+
+            <div class="form-group">
+                <label for="therapist">Therapist</label>
+
+                <select id="therapist" name="therapist" required>
+                <option value="doctor 1">Doctor 1</option>
+                <option value="doctor 2">Doctor 2</option>
+                <option value="doctor 3">Doctor 3</option>
+            </select>
+            </div>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="18" required>
+
+            <label for="disabilities">Disabilities:</label>
+            <select id="disabilities" name="disabilities">
+                <option value="">--Select--</option>
+                <option value="none">None</option>
+                <option value="hearing_impairment">Hearing Impairment</option>
+                <option value="speech_impairment">Speech Impairment</option>
+                <option value="physical_disability">Physical Disability</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="special_note">Special Note:</label>
+            <textarea id="special_note" name="special_note" rows="4" placeholder="Enter any special notes or additional information"></textarea>
+
+            <button class="save-btn" type="submit">Submit</button>
+        </form>
+    </div><br><br>
+
+    <!-- Popup for Add Guardian -->
+    <div class="popup" id="guardianPopup">
+        <div class="popup-content">
+
+            <h4>Add Guardian</h4>
+            <form action="paitent_add_guardian.php" method="POST">
+                <center>
+                    <img src="../Resourses/profile.png" width="80px" height="80px">
+                </center>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="Conpassword">Confirm Password</label>
+                <input type="password" id="Conpassword" name="Conpassword" required>
+
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="guardian">Guardian</option>
+                    </select>
+                </div><br>
+
+                <button class="save-btn" type="submit">Create</button><br>
+                <button type="button" class="close-button" onclick="closeGuardianPopup()">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Handle Patient Form Submission
+        document.getElementById("patientForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this); // Capture form data
+
+            try {
+                // Submit form data via Fetch API
+                const response = await fetch("paitent_note_entry.php", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    // Open the Guardian popup on successful submission
+                    openGuardianPopup();
+                } else {
+                    alert("Failed to submit the patient form. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error submitting the form:", error);
+                alert("An error occurred while submitting the form.");
+            }
+        });
+
+
+        // Open the popup
+        function openGuardianPopup() {
+            document.getElementById("guardianPopup").style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        }
+
+        // Close the popup
+        function closeGuardianPopup() {
+            document.getElementById("guardianPopup").style.display = "none";
+            document.body.style.overflow = ""; // Re-enable background scrolling
+        }
+    </script>
+</body>
+
+</html>

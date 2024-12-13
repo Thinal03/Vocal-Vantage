@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        margin: 0;
+        background: linear-gradient(135deg, #b3cce6, #E9EDF4);
+    }
+
+    /* Container (Sidebar) */
+    .container {
+        width: 200px;
+        background-color: white;
+        height: 110vh;
+        /* Full viewport height */
+        position: fixed;
+        left: 0;
+        top: 0;
+        overflow-y: auto;
+        /* Add scroll if content exceeds height */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    .sidebar .toggle-btn {
+        background-color: white;
+        color:#204060;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        text-align: center;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .sidebar-menu {
+        margin-top: 10px;
+    }
+
+
+    .sidebar-menu a {
+        display: block;
+        width: 100%;
+        margin: 25px 0;
+        padding: 10px;
+        text-align: left;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: #666;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .sidebar-menu select {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        text-align: left;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: #666;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+    .sidebar-menu a:hover,
+    .sidebar-menu select:hover {
+        background-color: #c6d9ec;
+        color: #204060;
+        font-weight: bold;
+        border: 1px solid #204060;
+        animation: buttonHover 0.3s forwards;
+    }
+
+    /* Main content area */
+    main {
+        margin-left: 210px;
+        /* Offset for fixed sidebar */
+        width: calc(100% - 200px);
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+    }
+
+    header {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        background-color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        align-items: center;
+        height: 80px;
+    }
+    .navbar .logo-image{
+            width: 90px;
+            height: 90px;
+            margin-left: 50px;
+        }
+    .navbar .logo {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #2d5986;
+        background-color: white;
+        padding: 0.5rem 0.8rem;
+        border-radius: 35px;
+        animation: slideIn 4s ease forwards;
+    }
+
+    .navbar .header-icons {
+        margin-left: 550px;
+        padding: 0.01rem 0.8rem;
+        border-radius: 35px;
+        display: flex;
+    }
+
+    .header-icons .icon {
+        padding: 0.6rem 1.0rem;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-right: 10px;
+
+    }
+    
+
+    .header-icons .icon a {
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        color: #204060;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .header-icons .icon a:hover {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+
+.content-intro{
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #b3cce6, #E9EDF4);
+    }
+        .content {
+            margin-top: 15px;
+        border-radius: 50px 0 50px 0;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        }
+        .content h2{
+            font-size: 2.5rem;
+        color: #204060;
+        margin-left: 15px;
+        }
+        .content p{
+            text-align: center;
+        font-size: 1rem;
+        color: #666;
+        }
+        /* Grid for one row, three sections */
+        .grid{
+            background: linear-gradient(135deg, #b3cce6, #E9EDF4);
+        padding: 50px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #E9EDF4, #b3cce6);
+            color: #204060;
+            text-decoration: none;
+
+            font-size: 16px;
+        }
+        
+        .button a:hover {
+            background-color: #204060;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <!-- Sidebar -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="toggle-btn">☰ Menu ☰</button>
+        <div class="sidebar-menu">
+        <a href="#dashboard">Home</a>
+        <a href="usermanagement.html"> User Management</a>
+        <a href="appoinments.php">Appoinments</a>
+        <a href="manage_content.html">Video Management</a>
+        <a href="platformreport_home.html">Website Usage Report</a>
+
+        <a href="../login.html">Logout</a>
+    </div>
+</div>
+</div>
+
+
+<main>
+    <!-- Main Content -->
+    <header class="navbar">
+    <img class="logo-image" src="../Resourses/index/logo 01.png">
+        <div class="logo">Vocal Vantage</div>
+
+        
+    </header>
+
+
+
+<section class="content-intro">
+    <!-- Content -->
+    <div class="content">
+        <h2>Welcome, Admin!</h2><br>
+        <p>Here is an overview of your dashboard.</p></div>
+    </section>
+
+<section class="grid">
+        <!-- Dashboard Cards -->
+        <div class="grid-container">
+            <div class="card">
+                <img src="../Resourses/Admin/user_management.gif" width="100px" height="100px">
+                <div class="button">
+                    <button><a href="usermanagement.html">User Management</a></button>
+                </div>
+
+            </div>
+            <div class="card">
+                <img src="../Resourses/Admin/appointment.gif" width="100px" height="100px">
+                <div class="button">
+                    <button><a href="appoinments.php">Appoinments</a></button>
+                </div>
+
+
+            </div>
+            <div class="card">
+                <img src="../Resourses/Admin/content.gif" width="100px" height="100px">
+                <div class="button">
+                    <button><a href="manage_content.html">Video Management</a></button>
+                </div>
+
+
+            </div>
+            <div class="card">
+                <img src="../Resourses/Admin/report.gif" width="100px" height="100px">
+                <div class="button">
+                    <button><a href="platformreport_home.html">WebSite Usage Report</a></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="../Resourses/Admin/feedback.gif" width="100px" height="100px">
+                <div class="button">
+                    <button><a href="feedbacktbl.php">Feedbacks</a></button>
+                </div>
+            </div>
+
+        </div>
+    </section></main>
+</body>
+
+</html>

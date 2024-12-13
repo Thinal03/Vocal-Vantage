@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Management</title>
+    <style>
+       /* General Reset */
+       * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient( #E9EDF4,#b3cce6, #E9EDF4);
+    min-height: 80vh;
+        }
+        /* Keyframes for animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes buttonHover {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+        
+        header {
+            position: relative;
+            height: 50px;
+        }
+        /* Navbar */
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 1.0rem 3rem;
+            background-color: #E9EDF4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #204060;
+            background-color: #FFFFFF;
+            padding: 0.5rem 0.8rem;
+            border-radius: 35px;
+            animation: slideIn 4s ease forwards;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .navbar .auth-buttons {
+            margin-left: 1000px;
+            background-color: #FFFFFF;
+            padding: 0.01rem 0.5rem;
+            border-radius: 35px;
+            
+        }
+        
+        .auth-buttons .signup {
+            padding: 0.6rem 1.0rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .auth-buttons .signup {
+            background-color: transparent;
+            color: #204060;
+        }
+        
+        .auth-buttons .signup:hover {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #204060;
+            animation: buttonHover 0.3s forwards;
+        }
+
+        .content {
+            padding: 50px;
+        }
+        .content h2{
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        /* Cards */
+        
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            text-align: center;
+            margin: 0 0 15px;
+        }
+        .card img {
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .card button {
+            background: linear-gradient(135deg, #E9EDF4, #b3cce6);
+            background-color: white;
+    border: none;
+    color: #204060;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card button:hover {
+    background-color: white;
+    color: white;
+    font-weight: bold;
+}
+
+.card button a {
+    color: #204060;
+    text-decoration: none;
+}
+.card button a:hover {
+    color: #204060;
+    font-weight: bold;
+    text-decoration: none;
+}
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+        <!-- Navbar -->
+        <header class="navbar">
+            <img src="../Resourses/index/logo 01.png">
+            <div class="logo">Vocal Vantage</div>
+    
+            <div class="auth-buttons">
+                <a href="admin.html"><button class="signup" >Back to Home</button></a>
+            </div>
+        </header>
+    <br>
+
+    <section class="grid">
+
+    <div class="content">
+        <h2>User Personal information</h2><br><br>
+        <div class="grid-container">
+            <div class="card">
+                <img src="../Resourses/Admin/THERAPIST.gif" width="100px" height="100px">
+                <h3>Therapist</h3>
+                <button><a href="therapist_personal_info.php">View Information </a></button>
+            </div>
+
+            <div class="card">
+                <img src="../Resourses/Admin/patient.gif" width="100px" height="100px">
+                <h3>Patient </h3>
+                <button><a href="paitent_personal_info.php">View Information </a></button>
+            </div>
+
+            <div class="card">
+                <img src="../Resourses/Admin/guardian-.gif" width="100px" height="100px">
+                <h3>Guardian </h3>
+                <button><a href="guardian_personal_info.php">View Information </a></button>
+            </div>
+        </div>
+        <br><br>
+        <h2>Patient Entry form information</h2><br><br>
+        <div class="grid-container">
+            <div class="card">
+                <center>
+                    <img src="../Resourses/Admin/Patient-entryform.gif" width="100px" height="100px">
+                    <h3>Paitent</h3>
+                    <button><a href="paitent_entry.php">View Information </a></button>
+                </center>
+            </div>
+        </div>
+    </div><br><br><br><br>
+    </section>
+</body>
+
+</html>

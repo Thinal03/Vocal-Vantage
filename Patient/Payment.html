@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+    <style>
+        /* General Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient( #02835640, #b3cce6);
+            min-height: 80vh;
+        }
+        /* Keyframes for animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes buttonHover {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+        
+        header {
+            position: relative;
+            height: 80px;
+        }
+        /* Navbar */
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 1.0rem 3rem;
+            background-color: #E9EDF4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #028355;
+            background-color: #FFFFFF;
+            padding: 0.5rem 0.8rem;
+            border-radius: 35px;
+            animation: slideIn 4s ease forwards;
+        }
+        
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .navbar .auth-buttons {
+            margin-left: 1000px;
+            background-color: #FFFFFF;
+            padding: 0.01rem 0.5rem;
+            border-radius: 35px;
+        }
+        
+        .auth-buttons .signup {
+            padding: 0.6rem 1.0rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .auth-buttons .signup {
+            background-color: transparent;
+            color: #028355;
+        }
+        
+        .auth-buttons .signup:hover {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #028355;
+            animation: buttonHover 0.3s forwards;
+        }
+        
+        .form-container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 50px 0 50px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            margin-left: 500px;
+            margin-top: 10px;
+            animation: slideIn 0.8s ease-out;
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            color: #028355;
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        input[type="text"],
+        input[type="int"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #02835674;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        
+        .checkbox-group {
+            margin-top: 5px;
+        }
+        
+        .checkbox-group label {
+            display: block;
+            font-weight: normal;
+            margin-left: 20px;
+            color: #333;
+        }
+        
+        .form-container .save-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #0283565b, #E9EDF4);
+            color: #028355;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px 0 50px 0;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        
+        .form-container .save-btn:hover {
+            background-color: #8996ea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <img src="../Resourses/index/logo 01.png">
+        <div class="logo">Vocal Vantage</div>
+
+
+    </header>
+    <br>
+    <div class="form-container">
+        <h2>Payments</h2>
+        <form action="payement.php" method="POST">
+            <label for="patient-id">Patient's ID</label>
+            <input type="text" id="patient-id" name="patient_id" min="1" max="120" required>
+
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                </select>
+
+            <label>Card holder name </label>
+            <input type="text" id="card_holder" name="card_holder" required>
+
+            <label>Card Number</label>
+            <input type="int" id="Card_number" name="Card_number" placeholder="xxxx xxxx xxxx xxxx" max="16" required>
+
+            <label>Card Expeir</label>
+            <input type="int" id="Card_exp" name="Card_exp" placeholder="MM/YYYY." max="6" required>
+
+            <label>CVC</label>
+            <input type="int" id="cvc" name="cvc" placeholder="cvc" required>
+
+
+            <label>Therapist Name</label>
+            <input type="text" id="therapist id" name="therapist id" required>
+
+
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <button class="save-btn" type="submit">Proceed to Checkout</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paitent message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a3cfed;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        
+        .side-image {
+            flex: 1;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .chat-form-container {
+            flex: 1;
+            background-color: #8ecbf3;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .chat-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .chat-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/chat with dr.jpg" alt="Side Image" class="side-image">
+    <div class="chat-form-container">
+        <div class="chat-form">
+            <h2>Chat with Doctor</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
